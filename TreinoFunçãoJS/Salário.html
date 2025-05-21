@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reajuste Salarial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            width: 250px;
+            padding: 0.6rem;
+            margin: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #resultado {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: inline-block;
+            width: 90%;
+            max-width: 400px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora de Aumento Salarial (10%)</h1>
+
+    <div>
+        <input type="number" id="salario" placeholder="Digite o salário atual">
+    </div>
+
+    <div style="margin-top: 1rem;">
+        <button onclick="calcularAumento()">Calcular Novo Salário</button>
+    </div>
+
+    <div id="resultado"></div>
+
+    <script>
+        function aumentosalario(salario) {
+            var novosalario = salario + (salario * (10 / 100));
+            return novosalario;
+        }
+
+        function calcularAumento() {
+            var salarioInput = document.getElementById("salario").value;
+            var salario = parseFloat(salarioInput);
+
+            // Validação simples
+            if (isNaN(salario) || salario <= 0) {
+                document.getElementById("resultado").innerText = "Por favor, insira um salário válido.";
+                return;
+            }
+
+            var resultado = aumentosalario(salario);
+
+            // Exibindo resultados
+            document.getElementById("resultado").innerText =
+                "Salário Antigo: R$ " + salario.toFixed(2) + "\n\n" +
+                "Novo Salário (+10%): R$ " + resultado.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

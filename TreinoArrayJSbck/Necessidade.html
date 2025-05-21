@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cavalos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 40px;
+        }
+
+        h1 {
+            color: black;
+            margin-bottom: 30px;
+        }
+
+        #btnCavalos {
+            background-color: #6b4c3b; /* Marrom escuro */
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #btnCavalos:hover {
+            background-color: #4a3024;
+        }
+
+        #listaCavalos {
+            margin-top: 20px;
+            background-color: #fffbe6;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            border: 1px solid #e0d7b7;
+        }
+
+        .nome-cavalo {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .preco-cavalo {
+            font-size: 14px;
+            font-style: italic;
+            color: #666;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cavalos</h1>
+
+    <!-- Botão para mostrar os cavalos -->
+    <button id="btnCavalos">Mostrar Cavalos</button>
+
+    <!-- Área onde os cavalos serão mostrados -->
+    <div id="listaCavalos"></div>
+
+    <script>
+        // Estrutura correta: array de objetos
+        const cavalos = [
+            { nome: 'Quarto de Milha', preco: 15000 },
+            { nome: 'Mangalarga', preco: 20000 }
+        ];
+
+        // Adicionando um novo cavalo
+        cavalos.push({ nome: 'Crioulo', preco: 18000 });
+
+        // Removendo o último cavalo (Mangalarga)
+        cavalos.pop();
+
+        // Seleciona elementos do DOM
+        const btn = document.getElementById('btnCavalos');
+        const listaDiv = document.getElementById('listaCavalos');
+
+        // Ação ao clicar no botão
+        btn.addEventListener('click', () => {
+            let html = '';
+            cavalos.forEach(cavalo => {
+                html += `
+                    <div class="item-cavalo">
+                        <span class="nome-cavalo">${cavalo.nome}</span><br>
+                        <span class="preco-cavalo">R$${cavalo.preco.toLocaleString('pt-BR')},00</span>
+                    </div>
+                    <hr style="margin: 10px 0;">
+                `;
+            });
+            listaDiv.innerHTML = html;
+            listaDiv.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

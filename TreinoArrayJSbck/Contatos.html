@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciador de Contatos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #btnContatos {
+            background-color: #003366; /* Azul marinho */
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #btnContatos:hover {
+            background-color: #002244;
+        }
+
+        #listaContatos {
+            margin-top: 20px;
+            background-color: #eef;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gerenciador de Contatos</h1>
+
+    <!-- Botão para mostrar os contatos -->
+    <button id="btnContatos">Contatos</button>
+
+    <!-- Área onde os contatos serão mostrados -->
+    <div id="listaContatos"></div>
+
+    <script>
+        // Lista de contatos como array de objetos
+        const contatos = [
+            { nome: 'Daiana', tel: 8881576841 },
+            { nome: 'Carol', tel: 8881332145 },
+            { nome: 'Duda', tel: 8843454788 }
+        ];
+
+        // Garante que o DOM esteja carregado antes de executar o script
+        document.addEventListener("DOMContentLoaded", function () {
+            const btn = document.getElementById('btnContatos');
+            const listaDiv = document.getElementById('listaContatos');
+
+            btn.addEventListener('click', () => {
+                let html = '<strong>Lista de Contatos:</strong><br><br>';
+                contatos.forEach((contato, index) => {
+                    html += `<strong>Nome:</strong> ${contato.nome}<br>`;
+                    html += `<strong>Telefone:</strong> ${contato.tel}<br>`;
+                    html += `--------------------<br>`;
+                });
+                listaDiv.innerHTML = html;
+                listaDiv.style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>

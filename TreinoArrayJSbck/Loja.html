@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja Produtos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+        }
+
+        h1 {
+            color: black;
+            margin-bottom: 30px;
+        }
+
+        #btnProdutos {
+            background-color: #003366; /* Azul marinho */
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #btnProdutos:hover {
+            background-color: #002244;
+        }
+
+        #listaProdutos {
+            margin-top: 20px;
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .preco {
+            font-style: italic;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Loja Produtos</h1>
+
+    <!-- Botão para mostrar os produtos -->
+    <button id="btnProdutos">Acessar as Roupas</button>
+
+    <!-- Área onde os produtos serão mostrados -->
+    <div id="listaProdutos"></div>
+
+    <script>
+        // Estrutura correta: array de objetos
+        const produtos = [
+            { nome: 'camisa', preco: 70 },
+            { nome: 'calça', preco: 90 },
+            { nome: 'tênis', preco: 100 },
+            { nome: 'boné', preco: 40 }
+        ];
+
+        // Adicionando um novo produto
+        produtos.push({ nome: 'jaqueta', preco: 80 });
+
+        // Removendo o último produto (boné)
+        produtos.pop();
+
+        // Seleciona elementos do DOM
+        const btn = document.getElementById('btnProdutos');
+        const listaDiv = document.getElementById('listaProdutos');
+
+        // Ação ao clicar no botão
+        btn.addEventListener('click', () => {
+            let html = '<strong>Lista de Produtos:</strong><br><br>';
+            produtos.forEach(produto => {
+                html += `<strong>${produto.nome}</strong>: <span class="preco">R$${produto.preco.toFixed(2)}</span><br>`;
+            });
+            listaDiv.innerHTML = html;
+            listaDiv.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

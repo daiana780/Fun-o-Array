@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Média</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            width: 80px;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #resultado {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: inline-block;
+            width: 90%;
+            max-width: 400px;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora de Soma e Média</h1>
+
+    <div>
+        <input type="number" id="nota1" placeholder="Nota 1">
+        <input type="number" id="nota2" placeholder="Nota 2">
+        <input type="number" id="nota3" placeholder="Nota 3">
+    </div>
+
+    <div style="margin-top: 1rem;">
+        <button onclick="calcular()">Calcular</button>
+    </div>
+
+    <div id="resultado"></div>
+
+    <script>
+        function media(n1, n2, n3) {
+            var soma = n1 + n2 + n3;
+            var media = soma / 3;
+            return { soma: soma, media: media };
+        }
+
+        function calcular() {
+            // Pegando os valores dos inputs
+            var nota1 = parseFloat(document.getElementById("nota1").value);
+            var nota2 = parseFloat(document.getElementById("nota2").value);
+            var nota3 = parseFloat(document.getElementById("nota3").value);
+
+            // Validação básica
+            if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
+                document.getElementById("resultado").innerText = "Por favor, insira três números válidos.";
+                return;
+            }
+
+            // Chamando a função
+            var resultado = media(nota1, nota2, nota3);
+
+            // Exibindo o resultado
+            document.getElementById("resultado").innerText =
+                "Soma: " + resultado.soma + "\n" +
+                "Média: " + resultado.media.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Função TRA - Soma ou Multiplica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            width: 100px;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #resultado {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: inline-block;
+            width: 90%;
+            max-width: 400px;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Função TRA: Soma ou Multiplica</h1>
+
+    <div>
+        <input type="number" id="numA" placeholder="Número A">
+        <input type="number" id="numB" placeholder="Número B">
+    </div>
+
+    <div style="margin-top: 1rem;">
+        <button onclick="calcularTRA()">Calcular</button>
+    </div>
+
+    <div id="resultado"></div>
+
+    <script>
+        function tra(a, b) {
+            if (a === b) {
+                return a + b;
+            } else {
+                return a * b;
+            }
+        }
+
+        function calcularTRA() {
+            var valorA = parseFloat(document.getElementById('numA').value);
+            var valorB = parseFloat(document.getElementById('numB').value);
+
+            // Validação simples
+            if (isNaN(valorA) || isNaN(valorB)) {
+                document.getElementById('resultado').innerText = "Por favor, insira dois números válidos.";
+                return;
+            }
+
+            var resultado = tra(valorA, valorB);
+
+            document.getElementById('resultado').innerText =
+                "Valor A: " + valorA + "\n" +
+                "Valor B: " + valorB + "\n\n" +
+                "Resultado: " + resultado;
+        }
+    </script>
+
+</body>
+</html>
